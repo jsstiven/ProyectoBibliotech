@@ -180,7 +180,7 @@ app.delete('/api/articulos/:id', (req, res)=>{
 // eliminar
 
 // listar categorias
-app.post('/api/categorias', (req, res)=>{
+app.post('/categorias', (req, res)=>{
     let data = {nombre_categoria: req.body.nombre_categoria};
     let sql = `SELECT * FROM articulos where nombre_categoria = '${data.nombre_categoria}'`;
     conexion.query(sql, data, (error, results)=>{
