@@ -180,6 +180,19 @@ app.delete('/api/articulos/:id', (req, res)=>{
 // eliminar
 
 // listar categorias
+app.post('/api/categorias', (req, res)=>{
+    let data = {nombre_categoria: req.body.nombre_categoria};
+    let sql = `SELECT * FROM articulos where nombre_categoria = '${data.nombre_categoria}'`;
+    conexion.query(sql, data, (error, results)=>{
+        if (results == '') {
+            console.log(error);
+            res.status(400).send("no esta");
+        } else {
+            res.status(200).send("si esta");
+        }
+    })
+});
+/*
 app.post('/categorias', (req, res)=>{
     let data = {nombre_categoria: req.body.nombre_categoria};
     console.log(data.nombre_categoria);
@@ -191,7 +204,7 @@ app.post('/categorias', (req, res)=>{
             res.send(results);
         }
     })
-});
+});*/
 // listar categorias
 
 
