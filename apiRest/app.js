@@ -182,6 +182,7 @@ app.delete('/api/articulos/:id', (req, res)=>{
 // listar categorias
 app.post('/categorias', (req, res)=>{
     let data = {nombre_categoria: req.body.nombre_categoria};
+    console.log(data.nombre_categoria);
     let sql = `SELECT * FROM articulos where nombre_categoria = '${data.nombre_categoria}'`;
     conexion.query(sql, data, (error, results)=>{
         if (error) {
