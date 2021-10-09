@@ -156,7 +156,7 @@ app.put('/api/articulos/:id', (req, res)=>{
     let isbn = req.body.isbn
     let sql = "UPDATE articulos SET nombre = ?, prestamo = ?, nombre_editorial = ?, nombre_autor = ?, nombre_categoria = ?, isbn = ? where id = ?";
     conexion.query(sql, [nombre, prestamo, nombre_editorial, nombre_autor, nombre_categoria, isbn,id], (error, results)=>{
-        if (results == '') {
+        if (error) {
             throw error;
         }else{
             res.send(results);
