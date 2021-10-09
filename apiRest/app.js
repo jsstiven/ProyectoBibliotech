@@ -9,7 +9,7 @@ app.use(cors());
 var conexion = mysql.createConnection({
     host: 'mysql-proyecto.alwaysdata.net',
     user: 'proyecto',
-    password: 'ToBy456789RoGeR',
+    password: 'PrOyEcTo7891',
     database: 'proyecto_bibliotech'
 });
 
@@ -88,9 +88,9 @@ app.put('/api/:id', (req, res)=>{
 // editar informacion
 
 // eliminar
-app.delete('/api/:correo', (req, res)=>{
-    let correo = req.params.correo;
-    conexion.query("DELETE FROM usuarios WHERE correo = ?", [correo],(error, filas)=>{
+app.delete('/api/:id', (req, res)=>{
+    let id = req.params.id;
+    conexion.query("DELETE FROM usuarios WHERE id = ?", [id],(error, filas)=>{
         if (error) {
             throw error;
         }else{
