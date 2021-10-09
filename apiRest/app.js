@@ -186,8 +186,6 @@ app.get('/api/articulos/:nombre_categoria', (req, res)=>{
             throw error;
         }else{
             res.send(fila);
-            //res.send(fila[0].nombre);
-            
         }
     })
 });
