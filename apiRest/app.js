@@ -180,8 +180,20 @@ app.delete('/api/articulos/:id', (req, res)=>{
 // eliminar
 
 // listar categorias
+app.post('/api/login', (req, res)=>{
+    let data = {usuario: req.body.usuario, contraseña: req.body.contraseña};
+    let sql = `SELECT * FROM usuarios where usuario = '${data.usuario}' and contraseña = '${data.contraseña}'`;
+    conexion.query(sql, data, (error, results)=>{
+        if (results == '') {
+            console.log(error);
+            res.status(400).send("no esta");
+        } else {
+            res.status(200).send("si esta");
+        }
+    })
+});
 app.get('/api/articulos/:nombre_categoria', (req, res)=>{
-    conexion.query('SELECT * FROM articulos where nombre_categoria = ?', [req.params.nombre_categoria],(error, fila)=>{
+    conexion.query('SELECT * FROM articulos where nombre_categoria = ?', [req.body.nombre_categoria],(error, fila)=>{
         if (error) {
             throw error;
         }else{
