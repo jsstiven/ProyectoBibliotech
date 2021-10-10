@@ -180,7 +180,7 @@ app.delete('/api/articulos/:id', (req, res)=>{
 // eliminar
 
 // listar categorias
-app.get('/categorias/:nombre_categoria', (req, res)=>{
+app.put('/categorias/:nombre_categoria', (req, res)=>{
     conexion.query('SELECT * FROM articulos where nombre_categoria = ?', [req.params.nombre_categoria],(error, fila)=>{
         console.log(fila)
         if (error) {
