@@ -180,6 +180,18 @@ app.delete('/api/articulos/:id', (req, res)=>{
 // eliminar
 
 // listar categorias
+
+app.get('/api/usuarios/:id', (req, res)=>{
+    conexion.query('SELECT * FROM usuarios where id = ?', [req.params.id],(error, fila)=>{
+        if (error) {
+            throw error;
+        }else{
+            res.send(fila);
+            //res.send(fila[0].nombre);
+        }
+    })
+});
+/*
 app.post('/categorias', (req, res)=>{
     let nombre_categoria = req.body.nombre_categoria;
     conexion.query(`SELECT * FROM articulos where nombre_categoria = ${nombre_categoria}`, [nombre_categoria],(error, fila)=>{
@@ -192,7 +204,7 @@ app.post('/categorias', (req, res)=>{
     })
 });
 
-/*
+
 app.post('/api/categorias', (req, res)=>{
     let data = {nombre_categoria: req.body.nombre_categoria};
     let sql = `SELECT * FROM articulos where nombre_categoria = '${data.nombre_categoria}'`;
